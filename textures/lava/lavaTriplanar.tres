@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ct772bt0pisg7"]
+
+[ext_resource type="Texture2D" uid="uid://dc1jsyt1rkcup" path="res://textures/lava/basecolor-1K.png" id="1_4xqyp"]
+[ext_resource type="Texture2D" uid="uid://uhna2ga47gmr" path="res://textures/lava/emissive-1K.png" id="2_sccl6"]
+[ext_resource type="Texture2D" uid="uid://bmaydnqai5ffb" path="res://textures/lava/normal-1K.png" id="3_12miy"]
+[ext_resource type="Texture2D" uid="uid://dv4eucfgdl2g2" path="res://textures/lava/roughness-1K.png" id="4_yn22l"]
+
+[resource]
+albedo_texture = ExtResource("1_4xqyp")
+roughness_texture = ExtResource("4_yn22l")
+emission_enabled = true
+emission_energy_multiplier = 4.0
+emission_texture = ExtResource("2_sccl6")
+normal_enabled = true
+normal_texture = ExtResource("3_12miy")
+uv1_scale = Vector3(0.69, 1.26, 1)
+uv1_offset = Vector3(0.46, -0.545, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true

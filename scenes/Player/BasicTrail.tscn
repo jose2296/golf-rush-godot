@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyuv6srrnp25b"]
+
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail.gdshader" id="1_65na7"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="2_hb78n"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="3_h2dr5"]
+[ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://GPUTrail-main/defaults/curve.tres" id="4_kgu80"]
+[ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3D.gd" id="5_remoi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lepjj"]
+shader = ExtResource("1_65na7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ul02"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_hb78n")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 40
+shader_parameter/color_ramp = ExtResource("3_h2dr5")
+shader_parameter/curve = ExtResource("4_kgu80")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lp1kq"]
+material = SubResource("ShaderMaterial_6ul02")
+
+[sub_resource type="MeshTexture" id="MeshTexture_7budd"]
+
+[node name="GPUTrail3D" type="GPUParticles3D"]
+transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, -0.181743, 0, 0)
+amount = 50
+lifetime = 50.0
+explosiveness = 1.0
+fixed_fps = 0
+visibility_aabb = AABB(-0.476854, -4, -0.521466, 0.953708, 8, 1.04293)
+process_material = SubResource("ShaderMaterial_lepjj")
+draw_pass_1 = SubResource("QuadMesh_lp1kq")
+script = ExtResource("5_remoi")
+length = 50
+texture = SubResource("MeshTexture_7budd")
+color_ramp = ExtResource("3_h2dr5")
+curve = ExtResource("4_kgu80")
+_defaults_have_been_set = true

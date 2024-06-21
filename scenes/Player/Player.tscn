@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://bw80egdto52hd"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_pci1q"]
+[ext_resource type="Script" path="res://scripts/PowerBar.gd" id="8_wetub"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pchbg"]
+rough = true
+bounce = 0.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_1jani"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ituee"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5q43d"]
+lightmap_size_hint = Vector2i(17, 19)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn2c3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p274h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n5k5y"]
+
+[node name="Player" type="RigidBody3D"]
+axis_lock_linear_z = true
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_pchbg")
+linear_damp = 1.0
+script = ExtResource("1_pci1q")
+
+[node name="MeshBall" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1jani")
+skeleton = NodePath("../..")
+
+[node name="ColliderBall" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ituee")
+
+[node name="DirectionBarParent" type="Node3D" parent="."]
+
+[node name="DirectionBar" type="MeshInstance3D" parent="DirectionBarParent"]
+transform = Transform3D(-8.74228e-09, -0.8, 0, 0.2, -3.49691e-08, 0, 0, 0, 0.2, 0.8, 0, 0)
+mesh = SubResource("CylinderMesh_5q43d")
+skeleton = NodePath("")
+
+[node name="PowerBar" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.5, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 0, -1, 1.5)
+material_override = SubResource("StandardMaterial3D_jn2c3")
+mesh = SubResource("BoxMesh_p274h")
+script = ExtResource("8_wetub")
+
+[node name="Value" type="MeshInstance3D" parent="PowerBar"]
+transform = Transform3D(0.001, 0, 0, 0, 0.579, 0, 0, 0, 0.966, 0, 0, 1.538)
+mesh = SubResource("BoxMesh_n5k5y")
