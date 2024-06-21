@@ -43,5 +43,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1106, 13.3657, 0)
 transform = Transform3D(0.159433, 0, 0, 0, 1, 0, 0, 0, 1.68414, 0, 0.450544, 0)
 mesh = SubResource("BoxMesh_0rqmb")
 
-[connection signal="body_entered" from="deathArea" to="Player" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="deathArea" to="Player" method="_on_death_area_body_entered"]
+[connection signal="body_entered" from="deathArea" to="Player" method="_on_area_3d_body_entered"]
