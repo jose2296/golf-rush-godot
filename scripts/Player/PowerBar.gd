@@ -4,6 +4,9 @@ class_name PowerBar extends MeshInstance3D
 var powerBarMaxScaleX = 0.95
 var powerBarMinPositionX = -0.48
 
+func _ready():
+	powerBarValue.scale.x = 0
+
 func updateValue(powerPercentage: float):
 	var powerBarScaleX = powerBarMaxScaleX * powerPercentage / 100
 	var positionX = (powerPercentage * powerBarMinPositionX / 100) * -1

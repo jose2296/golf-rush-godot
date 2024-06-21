@@ -43,6 +43,7 @@ func _ready():
 	var respawnNode = $"../Respawn"
 	if respawnNode:
 		respawnPosition = $"../Respawn".position
+		respawnPosition.y += scale.y / 2
 	position = respawnPosition
 	loadSkin()
 	loadTrail()
@@ -55,10 +56,10 @@ func loadTrail():
 	
 func loadSkin():
 	if skin == SkinTypes.lava:
-		var lavaMateria = preload("res://textures/lava/lava.tres")
+		var lavaMateria = preload("res://materials/lava.tres")
 		meshBall.material_override = lavaMateria
 		directionBar.material_override = lavaMateria
-		powerBarValue.material_override = preload("res://textures/lava/lavaTriplanar.tres")
+		powerBarValue.material_override = preload("res://materials/lavaTriplanar.tres")
 	
 func handlePressShoot(delta):
 	power += 200 * delta
