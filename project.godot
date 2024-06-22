@@ -14,6 +14,14 @@ config/name="Golf rush"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/addons/godot-firebase/plugin.cfg", "res://addons/godot-firebase/addons/http-sse-client/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg")
+
 [filesystem]
 
 import/fbx/enabled=false

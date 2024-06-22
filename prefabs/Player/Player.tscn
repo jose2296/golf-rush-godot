@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw80egdto52hd"]
+[gd_scene load_steps=14 format=3 uid="uid://bw80egdto52hd"]
 
 [ext_resource type="Script" path="res://scripts/Player/Player.gd" id="1_pci1q"]
+[ext_resource type="PackedScene" uid="uid://dhem6ko0po8yq" path="res://prefabs/Player/progress_bar.tscn" id="3_201uw"]
 [ext_resource type="Script" path="res://scripts/Player/PowerBar.gd" id="8_wetub"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pchbg"]
@@ -15,11 +16,22 @@ bounce = 0.8
 lightmap_size_hint = Vector2i(17, 19)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn2c3"]
+shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p274h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_n5k5y"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5i2gc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xj51t"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_5i2gc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x4daf"]
 
 [node name="Player" type="RigidBody3D"]
 axis_lock_linear_z = true
@@ -47,9 +59,20 @@ skeleton = NodePath("")
 transform = Transform3D(4.5, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 0, -1, 1.5)
 visible = false
 material_override = SubResource("StandardMaterial3D_jn2c3")
+cast_shadow = 0
 mesh = SubResource("BoxMesh_p274h")
 script = ExtResource("8_wetub")
 
 [node name="Value" type="MeshInstance3D" parent="PowerBar"]
 transform = Transform3D(0.001, 0, 0, 0, 0.579, 0, 0, 0, 0.966, 0, 0, 1.538)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_n5k5y")
+
+[node name="PowerBar V2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, -0.3, 0, 1, -1.31134e-08, 0, -1.079, 1.5)
+material_override = SubResource("StandardMaterial3D_xj51t")
+mesh = SubResource("PlaneMesh_x4daf")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="ProgressBar" parent="SubViewport" instance=ExtResource("3_201uw")]

@@ -11,7 +11,8 @@ enum TrailTypes {
 	basic
 }
 enum SkinTypes {
-	lava
+	lava,
+	golf
 }
 
 @export var respawnPosition: Vector3 = Vector3.ZERO
@@ -28,17 +29,20 @@ enum SkinTypes {
 
 @onready var directionBarParent: Node3D = $DirectionBarParent
 @onready var directionBar: MeshInstance3D = $DirectionBarParent/DirectionBar
-@onready var powerBar: PowerBar = $PowerBar
-@onready var powerBarValue: MeshInstance3D = $PowerBar/Value
 @onready var meshBall: MeshInstance3D = $MeshBall
 @onready var power = 0
 
+
+@onready var power_bar_v_2 = $"PowerBar V2"
+@onready var powerBarV2 = $SubViewport/ProgressBar
+
 func _ready():
 	if controlType == ControlTypes.touch:
-		var TouchController = preload("res://scenes/Player/TouchController.tscn")
+		var TouchController = preload("res://prefabs/Player/TouchController.tscn")
 		var touchControllerInstance = TouchController.instantiate()
 		add_child(touchControllerInstance)
-	powerBar.top_level = true
+	power_bar_v_2.top_level = true
+	powerBarV2.value = 0
 	directionBarParent.top_level = true
 	var respawnNode = $"../Respawn"
 	if respawnNode:
@@ -50,24 +54,32 @@ func _ready():
 	
 func loadTrail():
 	if trail == TrailTypes.basic:
-		var basicTrailScene = preload("res://scenes/Player/BasicTrail.tscn")
+		var basicTrailScene = preload("res://prefabs/Player/BasicTrail.tscn")
 		var basicTrail = basicTrailScene.instantiate()
 		add_child(basicTrail)
 	
 func loadSkin():
-	if skin == SkinTypes.lava:
-		var lavaMateria = preload("res://materials/lava.tres")
-		meshBall.material_override = lavaMateria
-		directionBar.material_override = lavaMateria
-		powerBarValue.material_override = preload("res://materials/lavaTriplanar.tres")
-	
+	match skin:
+		SkinTypes.lava:
+			var lavaMateria = preload("res://materials/lava.tres")
+			meshBall.material_override = lavaMateria
+			directionBar.material_override = lavaMateria
+			powerBarV2.texture_under = preload("res://textures/lava/lavaPowerBarUnder.tres")
+			powerBarV2.texture_progress = preload("res://textures/lava/emissive-1K.png")
+		SkinTypes.golf:
+			var golfMateria = preload("res://materials/golf.tres")
+			meshBall.material_override = golfMateria
+			directionBar.material_override = golfMateria
+			powerBarV2.texture_under = preload("res://textures/lava/lavaPowerBarUnder.tres")
+			powerBarV2.texture_progress = preload("res://textures/golf.jpg")
+			
 func handlePressShoot(delta):
 	power += 200 * delta
 	if power >= maxPower:
 		power = maxPower
 		
 	var powerPercentage = power * 100 / maxPower
-	powerBar.updateValue(powerPercentage)
+	powerBarV2.value = powerPercentage
 		
 func _physics_process(delta):
 	if sleeping and controlType == ControlTypes.keyboard:
@@ -81,12 +93,16 @@ func _physics_process(delta):
 			shoot()
 
 func _process(delta):
+	if controlType == ControlTypes.disabled:
+		power_bar_v_2.visible = false
+		directionBarParent.visible = false
+		return
 	directionBarParent.visible = sleeping
-	powerBar.visible = sleeping
+	power_bar_v_2.visible = sleeping
 	if sleeping: 
 		directionBarParent.position = position
-		powerBar.position.x = position.x
-		powerBar.position.y = position.y - 1
+		power_bar_v_2.position.x = position.x
+		power_bar_v_2.position.y = position.y - 1
 
 func shoot():
 	var angle = 180 - directionBarParent.rotation_degrees.z
@@ -97,7 +113,7 @@ func shoot():
 	#material_override.albedo_color = Color.RED
 	print('SHOOT => angle: ' + str(angle) + ', power: ' + str(powerPercentage))
 	power = 0
-	powerBar.updateValue(0)
+	powerBarV2.value = 0
 
 func _on_death_area_body_entered(body):
 	position = respawnPosition

@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://byyxkwu6t0ron"]
+
+[ext_resource type="Script" path="res://scripts/Auth.gd" id="1_bucwo"]
+
+[node name="Auth" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bucwo")
+
+[node name="Form" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Login" type="Button" parent="Form"]
+layout_mode = 2
+offset_left = 521.0
+offset_top = 186.0
+offset_right = 613.0
+offset_bottom = 241.0
+text = "Login"
+
+[node name="Register" type="Button" parent="Form"]
+layout_mode = 2
+offset_left = 646.0
+offset_top = 189.0
+offset_right = 751.0
+offset_bottom = 244.0
+text = "Register
+"
+
+[node name="Loading" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -11.5
+offset_right = 37.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+
+[connection signal="pressed" from="Form/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Form/Register" to="." method="_on_register_pressed"]

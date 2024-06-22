@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://damiqq8oor22q"]
+
+[ext_resource type="PackedScene" uid="uid://c5t3piuj8nj4h" path="res://prefabs/Maps/Map5.tscn" id="1_kgrlq"]
+[ext_resource type="PackedScene" uid="uid://bw80egdto52hd" path="res://prefabs/Player/Player.tscn" id="2_fvdgp"]
+[ext_resource type="PackedScene" uid="uid://d15h76lge1apf" path="res://prefabs/DeathArea.tscn" id="3_7fiqj"]
+[ext_resource type="PackedScene" uid="uid://edn6jndni1fw" path="res://prefabs/Respawn.tscn" id="4_hasd0"]
+
+[node name="Map 1" type="Node3D"]
+transform = Transform3D(1, 0.000750492, 0, -0.000750492, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999999, -0.000574514, 0.000267613, 0.000267613, 0.765516, 0.643416, -0.000574514, -0.643416, 0.765517, 5.58794e-09, 33.8748, 16.2202)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.19019, 8.93306)
+projection = 1
+size = 30.0
+
+[node name="Mapa-5" parent="." instance=ExtResource("1_kgrlq")]
+transform = Transform3D(0.299574, 2.91038e-11, 0, -2.91038e-11, 0.299574, 0, 0, 0, 0.299574, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_fvdgp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56504, -3.31783, 0)
+skin = 1
+
+[node name="DeathArea" parent="." instance=ExtResource("3_7fiqj")]
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.1518, 0)
+
+[node name="Respawn" parent="." instance=ExtResource("4_hasd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.1, -17, 13.2972, 0)
+
+[connection signal="body_entered" from="DeathArea" to="Player" method="_on_death_area_body_entered"]

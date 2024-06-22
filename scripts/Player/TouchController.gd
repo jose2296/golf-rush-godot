@@ -3,7 +3,6 @@ extends Control
 @onready var player: Player = $".."
 @export var offset = 100
 @export var defaultLineColor = Color.BLUE
-@onready var powerBar: PowerBar = $"../PowerBar"
 @onready var directionBar: Node3D = $"../DirectionBarParent"
 var lineColor = defaultLineColor
 
