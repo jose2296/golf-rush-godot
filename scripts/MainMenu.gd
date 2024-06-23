@@ -14,3 +14,7 @@ func _process(delta):
 func _on_logout_pressed():
 	Firebase.Auth.logout()
 	get_tree().change_scene_to_file('res://scenes/Auth.tscn')
+
+
+func _on_play_pressed():
+	get_tree().change_scene_to_file('res://scenes/SceneMap1.tscn')

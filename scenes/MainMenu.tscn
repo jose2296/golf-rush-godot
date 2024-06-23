@@ -27,19 +27,29 @@ grow_vertical = 2
 text = "MAIN MENU
 "
 
-[node name="logout" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 492.0
-offset_top = -295.0
-offset_right = 554.0
-offset_bottom = -264.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 51.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Golf Rush"
+
+[node name="logout" type="Button" parent="HBoxContainer"]
+layout_mode = 2
 text = "Logout"
 
-[connection signal="pressed" from="logout" to="." method="_on_logout_pressed"]
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 271.0
+offset_right = 952.0
+offset_bottom = 370.0
+
+[node name="Play" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Play"
+
+[connection signal="pressed" from="HBoxContainer/logout" to="." method="_on_logout_pressed"]
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]

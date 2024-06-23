@@ -22,7 +22,7 @@ transform = Transform3D(0.299574, 2.91038e-11, 0, -2.91038e-11, 0.299574, 0, 0, 
 
 [node name="Player" parent="." instance=ExtResource("2_fvdgp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56504, -3.31783, 0)
-skin = 1
+controlType = 1
 
 [node name="DeathArea" parent="." instance=ExtResource("3_7fiqj")]
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.1518, 0)

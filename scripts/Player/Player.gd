@@ -37,6 +37,7 @@ enum SkinTypes {
 @onready var powerBarV2 = $SubViewport/ProgressBar
 
 func _ready():
+	print('TEST ADNROID')
 	if controlType == ControlTypes.touch:
 		var TouchController = preload("res://prefabs/Player/TouchController.tscn")
 		var touchControllerInstance = TouchController.instantiate()
