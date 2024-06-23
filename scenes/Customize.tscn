@@ -1,0 +1,126 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jtayxqf6rkc"]
+
+[ext_resource type="Script" path="res://scenes/Customize.gd" id="1_o52gn"]
+[ext_resource type="Theme" uid="uid://csa4kj17cn0k6" path="res://resources/UiTheme.tres" id="2_76e4s"]
+
+[node name="Customize" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o52gn")
+
+[node name="Logo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.045
+anchor_right = 0.096
+anchor_bottom = 0.08
+offset_left = 0.287998
+offset_top = -0.160002
+offset_right = 0.407997
+offset_bottom = 0.159996
+text = "Golf Rush"
+
+[node name="logout" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.931
+anchor_top = 0.02
+anchor_right = 0.984
+anchor_bottom = 0.099
+offset_left = -0.512085
+offset_top = 0.039999
+offset_right = 0.432007
+offset_bottom = -0.152008
+grow_horizontal = 0
+text = "Logout"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.131
+anchor_top = 0.285
+anchor_right = 0.372
+anchor_bottom = 0.715
+offset_left = 0.0879822
+offset_top = 0.319977
+offset_right = 0.455994
+offset_bottom = -0.320007
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 185.0
+offset_right = 92.0
+offset_bottom = 463.0
+
+[node name="UserName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.199
+anchor_right = 0.54
+anchor_bottom = 0.235
+offset_left = 0.471985
+offset_top = 0.0479889
+offset_right = -0.0800171
+offset_bottom = -0.280014
+text = "User Name"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 185.0
+offset_right = 1065.0
+offset_bottom = 528.0
+
+[node name="TabContainer" type="TabContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 437.0
+offset_bottom = 343.0
+
+[node name="Skins" type="ScrollContainer" parent="Panel/TabContainer"]
+layout_mode = 2
+follow_focus = true
+
+[node name="GridContainer" type="GridContainer" parent="Panel/TabContainer/Skins"]
+layout_mode = 2
+theme = ExtResource("2_76e4s")
+
+[node name="Trails" type="ScrollContainer" parent="Panel/TabContainer"]
+visible = false
+layout_mode = 2
+follow_focus = true
+
+[node name="GridContainer" type="GridContainer" parent="Panel/TabContainer/Trails"]
+layout_mode = 2
+theme = ExtResource("2_76e4s")
+
+[node name="Accessories" type="ScrollContainer" parent="Panel/TabContainer"]
+visible = false
+layout_mode = 2
+follow_focus = true
+
+[node name="GridContainer" type="GridContainer" parent="Panel/TabContainer/Accessories"]
+layout_mode = 2
+theme = ExtResource("2_76e4s")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.099
+anchor_right = 0.07
+anchor_bottom = 0.147
+offset_left = 0.287998
+offset_top = -0.152008
+offset_right = 0.360001
+offset_bottom = -0.255997
+text = "Back"
+
+[connection signal="pressed" from="logout" to="." method="_on_logout_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

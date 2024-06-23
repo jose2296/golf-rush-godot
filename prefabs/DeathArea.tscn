@@ -2,7 +2,7 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_47arl"]
 
-[node name="deathArea" type="Area3D"]
+[node name="DeathArea" type="Area3D" groups=["deathArea"]]
 transform = Transform3D(12.2777, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.1518, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

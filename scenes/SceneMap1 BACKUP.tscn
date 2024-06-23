@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm0x2rl7m011h"]
+
+[ext_resource type="PackedScene" uid="uid://c5t3piuj8nj4h" path="res://prefabs/Maps/Map5.tscn" id="1_7fnvn"]
+[ext_resource type="PackedScene" uid="uid://bw80egdto52hd" path="res://prefabs/Player/Player.tscn" id="2_8u2e6"]
+[ext_resource type="PackedScene" uid="uid://d15h76lge1apf" path="res://prefabs/DeathArea.tscn" id="3_c6jq4"]
+[ext_resource type="PackedScene" uid="uid://edn6jndni1fw" path="res://prefabs/Respawn.tscn" id="4_un6ge"]
+[ext_resource type="PackedScene" uid="uid://damiqq8oor22q" path="res://scenes/BasicMap.tscn" id="5_kk376"]
+
+[node name="Map 1" type="Node3D"]
+transform = Transform3D(1, 0.000750492, 0, -0.000750492, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Mapa-5" parent="." instance=ExtResource("1_7fnvn")]
+transform = Transform3D(0.299574, 2.91038e-11, 0, -2.91038e-11, 0.299574, 0, 0, 0, 0.299574, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_8u2e6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56504, -3.31783, 0)
+accesory = 1
+
+[node name="DeathArea" parent="." instance=ExtResource("3_c6jq4")]
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.1518, 0)
+visible = false
+
+[node name="Respawn" parent="." instance=ExtResource("4_un6ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.1, -17, 13.2972, 0)
+visible = false
+
+[node name="BasicMap" parent="." instance=ExtResource("5_kk376")]
+
+[connection signal="body_entered" from="DeathArea" to="Player" method="_on_death_area_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jb2xq6niiswk"]
+
+[ext_resource type="Script" path="res://scripts/Practice.gd" id="1_08tfp"]
+
+[node name="Practice" type="Node3D"]
+script = ExtResource("1_08tfp")

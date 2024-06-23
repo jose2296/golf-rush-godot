@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvxe0cs1ib8m4"]
+
+[ext_resource type="ArrayMesh" uid="uid://mj600444vl6m" path="res://crown.obj" id="1_nvto2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_216u7"]
+albedo_color = Color(1, 0.822, 0.11, 1)
+metallic = 0.34
+metallic_specular = 0.39
+
+[node name="Crown" type="MeshInstance3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.45, 0)
+material_override = SubResource("StandardMaterial3D_216u7")
+mesh = ExtResource("1_nvto2")

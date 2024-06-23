@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://damiqq8oor22q"]
+
+[ext_resource type="Script" path="res://scripts/BasicMap.gd" id="1_35ffo"]
+
+[node name="BasicMap" type="Node3D"]
+transform = Transform3D(1, 0.000750492, 0, -0.000750492, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_35ffo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999999, -0.000574514, 0.000267613, 0.000267613, 0.765516, 0.643416, -0.000574514, -0.643416, 0.765517, 5.58794e-09, 33.8748, 16.2202)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.933)
+projection = 1
+size = 30.0
+
+[node name="Back" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.099
+anchor_right = 0.07
+anchor_bottom = 0.147
+offset_left = 0.287998
+offset_top = -0.152008
+offset_right = 0.360001
+offset_bottom = -0.255997
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

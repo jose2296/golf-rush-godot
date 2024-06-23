@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+StateManagement="*res://scripts/StateManagement.gd"
+
+[display]
+
+window/size/always_on_top=true
 
 [editor_plugins]
 
