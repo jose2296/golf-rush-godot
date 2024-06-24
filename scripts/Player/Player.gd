@@ -52,7 +52,7 @@ func handleTouchControls():
 		var TouchController = preload("res://prefabs/Player/TouchController.tscn")
 		var touchControllerInstance = TouchController.instantiate()
 		add_child(touchControllerInstance)
-	
+		
 func loadTrail():
 	if trail == StateManagement.TrailTypes.basic:
 		var basicTrailScene = preload("res://prefabs/Player/BasicTrail.tscn")
